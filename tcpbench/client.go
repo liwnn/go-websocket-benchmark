@@ -7,8 +7,8 @@ import (
 
 	"go-websocket-benchmark/config"
 	"go-websocket-benchmark/logging"
-	"go-websocket-benchmark/mwsbench/connections"
 	"go-websocket-benchmark/mwsbench/report"
+	"go-websocket-benchmark/tcpbench/connections"
 )
 
 var (
@@ -16,7 +16,7 @@ var (
 	memLimit = flag.Int64("m", 1024*1024*1024*4, `memory limit`)
 
 	// Server Side
-	framework = flag.String("f", config.NbioStd, `framework, e.g. "gorilla"`)
+	framework = flag.String("f", config.NbioTcp, `framework, e.g. "gorilla"`)
 	ip        = flag.String("ip", "127.0.0.1", `ip, e.g. "127.0.0.1"`)
 
 	// Connection
@@ -39,7 +39,6 @@ var (
 	rateConcurrency = flag.Int("rc", 50000, "benchrate: concurrency: how many goroutines used to do the echo test")
 	rateDuration    = flag.Int("rd", 10, `benchrate: how long to spend to do the test`)
 	rateSendRate    = flag.Int("rr", 100, "benchrate: how many request message can be sent to 1 conn every second")
-	rateBatchSize   = flag.Int("rbs", 1024*16, "benchrate: how many bytes can be written to 1 conn every time")
 	rateSendLimit   = flag.Int("rl", 0, `benchrate: message sending limitation per second`)
 
 	// for report generation

@@ -65,6 +65,7 @@ func startServers(addrs []string) *nbhttp.Engine {
 		IOMod:                   nbhttp.IOModNonBlocking,
 		ReleaseWebsocketPayload: true,
 		Listen:                  frameworks.Listen,
+		NListener:               1,
 	})
 
 	err := engine.Start()

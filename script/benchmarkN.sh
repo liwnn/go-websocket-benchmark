@@ -34,8 +34,14 @@ for f in ${frameworks[@]}; do
             for n in ${BenchTime[@]}; do
                 # echo $line
                 suffix="_${c}_${b}_${n}"
-                #echo "benchmarkN: [${f}], ${c} connections, ${b} payload, ${n} times"
-                . ./script/client.sh -f=$f -c=$c -b=$b -n=$n -suffix=${suffix} -rate=true
+                if [ $f = "nbio_tcp" ]; then
+                  #echo "benchmarkN: [${f}], ${c} connections, ${b} payload, ${n} times"
+                  . ./script/tcpclient.sh -f=$f -c=$c -b=$b -suffix=${suffix} -rate=true
+                else
+                  #echo "benchmarkN: [${f}], ${c} connections, ${b} payload, ${n} times"
+                  . ./script/client.sh -f=$f -c=$c -b=$b -suffix=${suffix} -rate=true
+                fi
+
                 sleep $SleepTime
             done
         done

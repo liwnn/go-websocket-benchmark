@@ -12,6 +12,7 @@ var (
 )
 
 func Listen(network, addr string) (net.Listener, error) {
+	return reuseport.Listen(network, addr)
 	if *reuse {
 		return reuseport.Listen(network, addr)
 	}

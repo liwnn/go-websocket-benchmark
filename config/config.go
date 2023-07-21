@@ -23,6 +23,7 @@ const (
 	GoNettyWs          = "nettyws"
 	Nhooyr             = "nhooyr"
 	Quickws            = "quickws"
+	NbioTcp            = "nbio_tcp"
 )
 
 var Ports = map[string]string{
@@ -35,11 +36,12 @@ var Ports = map[string]string{
 	HertzStd:           "16001:16050",
 	NbioModBlocking:    "17001:17050",
 	NbioModMixed:       "18001:18050",
-	NbioModNonblocking: "19001:19050",
+	NbioModNonblocking: "19001:19001",
 	NbioStd:            "20001:20050",
 	GoNettyWs:          "21001:21050",
 	Nhooyr:             "22001:22050",
 	Quickws:            "23001:23050",
+	NbioTcp:            "30001:30001",
 }
 
 var FrameworkList = []string{
@@ -57,6 +59,7 @@ var FrameworkList = []string{
 	GoNettyWs,
 	Nhooyr,
 	Quickws,
+	NbioTcp,
 }
 
 func GetFrameworkBenchmarkPorts(framework string) ([]int, error) {
